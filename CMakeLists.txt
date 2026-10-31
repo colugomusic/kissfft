@@ -40,13 +40,20 @@ endif()
 
 include(GNUInstallDirs)
 
+include(CMakePackageConfigHelpers)
 install(TARGETS kissfft
 	EXPORT kissfft-targets
+	FILE_SET HEADERS DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/kissfft
 	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-	FILE_SET HEADERS DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
-
 install(EXPORT kissfft-targets
+	FILE kissfft-targets.cmake
 	NAMESPACE kissfft::
 	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/kissfft
 )
+configure_package_config_file(
+    "${CMAKE_CURRENT_LIST_DIR}/cmake/kissfft-config.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/kissfft-config.cmake"
+    INSTALL_DESTINATION lib/cmake/kissfft
+)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kissfft-config.cmake" DESTINATION lib/cmake/kissfft)
