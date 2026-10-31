@@ -1,5 +1,7 @@
 @PACKAGE_INIT@
 
-include("${CMAKE_CURRENT_LIST_DIR}/kissfft-targets.cmake")
+include(CMakeFindDependencyMacro)
 
-check_required_components(kissfft)
+find_dependency(OpenMP COMPONENTS C)
+
+include("${CMAKE_CURRENT_LIST_DIR}/kissfft-targets.cmake")

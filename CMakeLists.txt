@@ -34,11 +34,7 @@ target_compile_definitions(kissfft PUBLIC
 	kiss_fft_scalar=float
 )
 
-if(OpenMP_C_FOUND)
-	target_link_libraries(kissfft PUBLIC OpenMP::OpenMP_C)
-endif()
-
-include(GNUInstallDirs)
+target_link_libraries(kissfft PUBLIC OpenMP::OpenMP_C)
 
 include(CMakePackageConfigHelpers)
 install(TARGETS kissfft
