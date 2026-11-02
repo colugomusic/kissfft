@@ -36,6 +36,7 @@ target_compile_definitions(kissfft PUBLIC
 
 target_link_libraries(kissfft PUBLIC OpenMP::OpenMP_C)
 
+include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 install(TARGETS kissfft
 	EXPORT kissfft-targets
